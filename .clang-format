@@ -1,0 +1,17 @@
+BasedOnStyle: LLVM
+IndentWidth: 4                 # Use 4 spaces for indentation
+ColumnLimit: 80                # Maximum line length set to 80 characters
+UseTab: Never                  # Never use tabs for indentation
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AllowShortIfStatementsOnASingleLine: false
+BreakBeforeBraces: Allman      # Place braces on a new line, as required by Norminette
+SpaceBeforeParens: ControlStatements
+IndentCaseLabels: false        # Cases should not be indented, as per Norminette
+AllowShortFunctionsOnASingleLine: None
+AlwaysBreakAfterDefinitionReturnType: None
+BreakConstructorInitializersBeforeComma: false
+SpaceAfterCStyleCast: true
+PointerAlignment: Left         # Align pointers to the left
+SpacesInParentheses: false     # No spaces inside parentheses
+Cpp11BracedListStyle: false
