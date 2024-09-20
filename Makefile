@@ -3,14 +3,20 @@ CFLAGS = -Wall -Wextra -Werror -I$(INC_LIB) -I $(INC_DIR)
 LDFLAGS = -L.. -lft  # Link with libft.a in the parent directory
 
 # Directories
-SRC_DIR = src
+PART1_DIR = test/Part\ 1
+PART2_DIR = test/Part\ 2
+BONUS_DIR = test/Part\ Bonus
 OBJ_DIR = obj
 INC_DIR = includes
 INC_LIB = ../.
 
 # Source and Object files
-SRC = $(wildcard $(SRC_DIR)/*.c)
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+PART1_SRC = $(wildcard $(PART1_DIR)/*.c)
+PART2_SRC = $(wildcard $(PART2_DIR)/*.c)
+BONUS_SRC = $(wildcard $(BONUS_DIR)/*.c)
+PART1_OBJ = $(PART1_SRC:$(PART1_DIR)/%.c=$(OBJ_DIR)/%.o)
+PART2_OBJ = $(PART2_SRC:$(PART2_DIR)/%.c=$(OBJ_DIR)/%.o)
+BONUS_OBJ = $(BONUS_SRC:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Executable name
 EXEC = test_program
@@ -42,3 +48,4 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
+ #cc main.c ./test/Part\ 1/test_atoi.c -I includes -I../libft -L../libft -lft

@@ -1,0 +1,6 @@
+/* 
+test putnbr with max int
+test putnbr with max neg int
+test if it goes in destination
+
+ */
