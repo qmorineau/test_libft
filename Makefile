@@ -1,38 +1,35 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INC_LIB) -I $(INC_DIR)
-LDFLAGS = -L.. -lft  # Link with libft.a in the parent directory
+LDFLAGS = -L $(INC_LIB) -lft  # Link with libft.a in the parent directory
 
 # Directories
-PART1_DIR = test/Part\ 1
-PART2_DIR = test/Part\ 2
-BONUS_DIR = test/Part\ Bonus
+SRC_DIR = test/mandatory
+BONUS_DIR = test/bonus
 OBJ_DIR = obj
 INC_DIR = includes
-INC_LIB = ../.
+INC_LIB = ../libft
 
 # Source and Object files
-PART1_SRC = $(wildcard $(PART1_DIR)/*.c)
-PART2_SRC = $(wildcard $(PART2_DIR)/*.c)
+MAIN = ./main.c
+SRC = $(wildcard $(SRC_DIR)/*.c)
 BONUS_SRC = $(wildcard $(BONUS_DIR)/*.c)
-PART1_OBJ = $(PART1_SRC:$(PART1_DIR)/%.c=$(OBJ_DIR)/%.o)
-PART2_OBJ = $(PART2_SRC:$(PART2_DIR)/%.c=$(OBJ_DIR)/%.o)
+SRC_OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 BONUS_OBJ = $(BONUS_SRC:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Executable name
 EXEC = test_program
 
 # Main target
-all: $(EXEC)
+all: $(EXEC) start
 
 # Compile source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled: $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Link object files with the static library to create the executable
-$(EXEC): $(OBJ)
-	$(CC) $(OBJ) $(LDFLAGS) -o $(EXEC)
+$(EXEC): $(SRC_OBJ)
+	@$(CC) $(SRC_OBJ) $(MAIN) $(CFLAGS) $(LDFLAGS) -o $(EXEC)
 	@echo "Executable $(EXEC) created."
 
 # Clean up object files and the executable
@@ -46,6 +43,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus:	$(SRC_OBJ)	$(BONUS_SRC) start
+	@$(CC) $(SRC_OBJ) $(BONUS_SRC) $(MAIN) $(CFLAGS) $(LDFLAGS) -o $(EXEC)
+	@echo "Executable $(EXEC) created."
 
- #cc main.c ./test/Part\ 1/test_atoi.c -I includes -I../libft -L../libft -lft
+start:
+	@./$(EXEC)
+
+.PHONY: all clean fclean re bonus start

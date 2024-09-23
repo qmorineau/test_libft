@@ -1,4 +1,0 @@
-/* 
-test putchar
-test file destination
- */
