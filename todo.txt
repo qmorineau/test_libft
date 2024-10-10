@@ -1,0 +1,1 @@
+add NULL test where there's string (even fd func)
