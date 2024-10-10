@@ -1,6 +1,6 @@
 #include "unit_test.h"
 
-int test_atoi_return (char *input, int output)
+static int test_atoi_return (char *input, int output)
 {
 	if (ft_atoi(input) == output)
 	{
@@ -22,6 +22,7 @@ int test_atoi(void) {
 	test_atoi_return("-2147483648", -2147483648);
 	test_atoi_return("+-42", 0);
 	test_atoi_return("abc", 0);
+	//test_atoi_return("2147483648");
 	//test_atoi_return(NULL, 0); // Segfault test case
 	NEWL();
 	return (1);

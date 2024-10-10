@@ -26,6 +26,7 @@ all: $(EXEC) start
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiled: $<"
 
 # Link object files with the static library to create the executable
 $(EXEC): $(SRC_OBJ)
