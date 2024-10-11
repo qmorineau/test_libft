@@ -19,8 +19,13 @@ BONUS_OBJ = $(BONUS_SRC:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 # Executable name
 EXEC = test_program
 
+# Colors
+YELLOW = \033[0;33m
+RED = \033[0;31m
+RESET = \033[0m
+
 # Main target
-all: $(EXEC) start
+all: make $(EXEC) start
 
 # Compile source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -44,9 +49,17 @@ fclean: clean
 
 re: fclean all
 
-bonus:	$(SRC_OBJ)	$(BONUS_SRC) start
+bonus:	makebonus $(SRC_OBJ)	$(BONUS_SRC) start
 	@$(CC) $(SRC_OBJ) $(BONUS_SRC) $(MAIN) $(CFLAGS) $(LDFLAGS) -o $(EXEC)
 	@echo "Executable $(EXEC) created."
+
+make:
+	@make -C ../libft
+	@echo "$(YELLOW)Libft.a created$(RESET)"
+
+makebonus:
+	@make bonus -C ../libft
+	@echo "$(YELLOW)Libft.a with bonus created$(RESET)"
 
 start:
 	@./$(EXEC)
