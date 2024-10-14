@@ -2,11 +2,16 @@
 
 int assert_itoa (int input, char* output)
 {
-	if (strcmp(ft_itoa(input), output))
+	char *s;
+
+	s = ft_itoa(input);
+	if (strcmp(s, output))
 	{
+		free(s);
 		PRINT_FAIL();
 		return (0);
 	}
+	free(s);
 	PRINT_OK();
 	return (1);
 }
