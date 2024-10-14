@@ -1,6 +1,6 @@
 #include "unit_test.h"
 
-int	test_iszero(const void *memory, size_t size)
+static int	test_iszero(const void *memory, size_t size)
 {
 	unsigned char *mem = (unsigned char *)memory;
     for (size_t i = 0; i < size; i++) {

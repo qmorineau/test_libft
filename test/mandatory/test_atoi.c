@@ -22,7 +22,7 @@ int test_atoi(void) {
 	test_atoi_return("-2147483648", -2147483648);
 	test_atoi_return("+-42", 0);
 	test_atoi_return("abc", 0);
-	//test_atoi_return("2147483648");
+	//printf("%d\n", ft_atoi("2147483648125681"));
 	//test_atoi_return(NULL, 0); // Segfault test case
 	NEWL();
 	return (1);
