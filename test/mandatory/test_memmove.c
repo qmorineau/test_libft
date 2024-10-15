@@ -24,6 +24,7 @@ static void assert_memmove_overlap(int dst, int src, int size)
 
 	memmove(&s1[dst], &s1[src], size);
 	ft_memmove(&s2[dst], &s2[src], size);
+	printf("%s = %s\n", s1, s2);
 	if (strcmp(s1, s2) == 0)
 		PRINT_OK();
 	else
