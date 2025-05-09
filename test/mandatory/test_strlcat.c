@@ -1,5 +1,27 @@
 #include "unit_test.h"
 
+static size_t	strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	dst_len;
+	size_t	src_len;
+
+	dst_len = 0;
+	while (dst_len < size && dst[dst_len])
+		dst_len++;
+	src_len = ft_strlen((char *) src);
+	if (size == dst_len)
+		return (dst_len + src_len);
+	i = 0;
+	while (src[i] && dst_len + i < size - 1)
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
+}
+
 static int assert_strlcat(char *cat, char *expected, size_t len)
 {
 	char s1[20] = "0123456789";

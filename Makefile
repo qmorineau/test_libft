@@ -7,7 +7,8 @@ SRC_DIR = test/mandatory
 BONUS_DIR = test/bonus
 OBJ_DIR = obj
 INC_DIR = includes
-INC_LIB = ../libft
+LIB_DIR = ./libft
+INC_LIB = $(LIB_DIR)/.
 
 # Source and Object files
 MAIN = ./main.c
@@ -54,11 +55,11 @@ bonus:	makebonus $(SRC_OBJ)	$(BONUS_SRC) start
 	@echo "Executable $(EXEC) created."
 
 make:
-	@make -C ../libft
+	@make -C $(LIB_DIR)
 	@echo "$(YELLOW)Libft.a created$(RESET)"
 
 makebonus:
-	@make bonus -C ../libft
+	@make bonus -C $(LIB_DIR)
 	@echo "$(YELLOW)Libft.a with bonus created$(RESET)"
 
 start:
